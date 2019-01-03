@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "489160468959",
+    "firebase_url": "https://allinone-1545251808310.firebaseio.com",
+    "project_id": "allinone-1545251808310",
+    "storage_bucket": "allinone-1545251808310.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:489160468959:android:7333822b4730526f",
+        "android_client_info": {
+          "package_name": "ps.borsuquesquad.pl.allinone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "489160468959-1tkjr8ogvt4r380jm1n49ik26d1h9hsu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ps.borsuquesquad.pl.allinone",
+            "certificate_hash": "63550d728d25262fd447f736ac1585de7a639432"
+          }
+        },
+        {
+          "client_id": "489160468959-h1li1ilglfqdga5laufh5kbkbqrh0d6u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ps.borsuquesquad.pl.allinone",
+            "certificate_hash": "da708bf8bbed64c70fc2df1b4b6b62749636a3ec"
+          }
+        },
+        {
+          "client_id": "489160468959-vln9le2632kiqvda7ikbi5fjmrqi3m2j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCn1GSqxLlM6B7zhOeW6PG2C-RKpdtNst4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "489160468959-vln9le2632kiqvda7ikbi5fjmrqi3m2j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
