@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -26,9 +27,10 @@ import com.google.firebase.auth.GoogleAuthProvider;
 
 public class LoginPage extends AppCompatActivity {
 
-    Button googleButton;
-    Button facebookButton;
+    SignInButton googleButton;
+    LoginButton facebookButton;
     Button signInButton;
+    FirebaseAuth.AuthStateListener mAuthStateListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +39,9 @@ public class LoginPage extends AppCompatActivity {
 
         googleButton = findViewById(R.id.button);
         facebookButton = findViewById(R.id.button2);
-        signInButton = findViewById(R.id.button3);
+        //signInButton = findViewById(R.id.button3);
+
+
 
     }
 
@@ -51,6 +55,21 @@ public class LoginPage extends AppCompatActivity {
                 startActivity(new Intent(LoginPage.this, Google.class));
             }
         });
+        facebookButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginPage.this, Facebook.class));
 
+            }
+        });
+        mAuthStateListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                if (firebaseAuth.getCurrentUser()!=null){
+                    startActivity(new Intent(LoginPage.this, UserPage.class));
+                }
+
+            }
+        };
     }
 }
