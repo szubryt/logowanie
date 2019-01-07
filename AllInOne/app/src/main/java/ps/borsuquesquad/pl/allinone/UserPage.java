@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import com.facebook.login.LoginManager;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class UserPage extends AppCompatActivity {
@@ -25,7 +26,6 @@ public class UserPage extends AppCompatActivity {
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_page);
-
         logout = findViewById(R.id.logout_btn);
         mAuth = FirebaseAuth.getInstance();
 
@@ -43,9 +43,11 @@ public class UserPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mAuth.signOut();
+                LoginManager.getInstance().logOut();
+                startActivity(new Intent(UserPage.this, LoginPage.class));
+
             }
         });
-
     }
 
 }

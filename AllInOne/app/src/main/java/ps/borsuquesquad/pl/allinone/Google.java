@@ -54,7 +54,6 @@ public class Google extends AppCompatActivity {
                 .requestEmail()
                 .build();
 
-        // Build a GoogleSignInClient with the options specified by gso.
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
         signIn();
     }
@@ -66,8 +65,6 @@ public class Google extends AppCompatActivity {
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
-        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
 
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
@@ -75,28 +72,29 @@ public class Google extends AppCompatActivity {
                 GoogleSignInAccount account = result.getSignInAccount();
                 firebaseAuthWithGoogle(account);
             } else {
-                Toast.makeText(Google.this, "Ups coś poszło nie tak", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Google.this, "Log In failed", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(Google.this, LoginPage.class));
+
 
             }
         }
     }
 
-
     private void firebaseAuthWithGoogle(GoogleSignInAccount account) {
-
         AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
         firebaseAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
                             Log.d("Success", "signInWithCredential:success");
                             FirebaseUser user = firebaseAuth.getCurrentUser();
+                            Toast.makeText(Google.this, "Wellcome "+user.getDisplayName(), Toast.LENGTH_SHORT).show();
+
                         } else {
-                            // If sign in fails, display a message to the user.
                             Log.w("TAG", "signInWithCredential:failure", task.getException());
-                            Toast.makeText(Google.this, "Nie udało się zalogować", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Google.this, "Unable to log in", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(Google.this, LoginPage.class));
 
                         }
                     }
